@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "../../button/Button";
 
 export const TableBody = ({ rows, type, assignAdmin }) => {
   return (
@@ -17,19 +18,19 @@ export const TableBody = ({ rows, type, assignAdmin }) => {
               <td>{data?.email}</td>
               <td>
                 {data?.admin === null || data?.admin === false ? (
-                  <button
+                  <Button
                     className="admin-btn"
                     onClick={() => assignAdmin(data, true)}
                   >
                     False
-                  </button>
+                  </Button>
                 ) : (
-                  <button
+                  <Button
                     className="admin-btn"
                     onClick={() => assignAdmin(data, false)}
                   >
                     True
-                  </button>
+                  </Button>
                 )}
               </td>
             </>

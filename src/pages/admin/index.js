@@ -3,6 +3,7 @@ import { withAdminOnly } from "../../utils/withAdminOnly";
 import { ShowUsers } from "../../components/admin/ShowUsers";
 import { ShowProduct } from "../../components/admin/ShowProduct";
 import { AdminBar } from "../../components/admin/AdminBar";
+import { Container } from "../../generic-components/container/Container";
 
 const Admin = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -10,7 +11,7 @@ const Admin = () => {
   const [users, setUsers] = useState([]);
   const [activeTable, setActiveTable] = useState(null);
   return (
-    <div>
+    <Container>
       <AdminBar
         setActiveTable={setActiveTable}
         setModalOpen={setModalOpen}
@@ -24,7 +25,7 @@ const Admin = () => {
       {activeTable === "users" && users.length > 0 && (
         <ShowUsers users={users} />
       )}
-    </div>
+    </Container>
   );
 };
 

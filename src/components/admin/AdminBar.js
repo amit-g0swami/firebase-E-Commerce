@@ -3,15 +3,15 @@ import Grid from "@mui/material/Grid";
 import { BiRefresh } from "react-icons/bi";
 import { showAllProducts, showAllUsers } from "../../services/admin-service";
 import { AddProduct } from "./AddProduct";
-import Button from "@mui/material/Button";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { Button } from "../../generic-components/button/Button";
 
 export const AdminBar = ({
   setActiveTable,
   setModalOpen,
   modalOpen,
   setProducts,
-  setUsers
+  setUsers,
 }) => {
   const handleShowProducts = async () => {
     await showAllProducts(setProducts);
@@ -31,14 +31,14 @@ export const AdminBar = ({
       <Grid item xs={12} sm={6}>
         <Grid container spacing={1}>
           <Grid item>
-            <button variant="contained" onClick={handleShowProducts}>
+            <Button onClick={handleShowProducts}>
               Show Products <BiRefresh />
-            </button>
+            </Button>
           </Grid>
           <Grid item>
-            <button variant="contained" onClick={handleShowUsers}>
+            <Button onClick={handleShowUsers}>
               Show Users <BiRefresh />
-            </button>
+            </Button>
           </Grid>
           <Grid item style={{ marginTop: "3px" }}>
             <AddCircleOutlineIcon onClick={() => setModalOpen(!modalOpen)} />

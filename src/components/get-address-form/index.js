@@ -3,11 +3,12 @@ import { Form } from "../../generic-components/form/Form";
 import { FormInput } from "../../generic-components/input/FormInput";
 import { useSelector } from "react-redux";
 import { addShippingDetails } from "../../redux/actions/auth-action";
+import { Button } from "../../generic-components/button/Button";
 
 export const GetAddress = ({ modalOpen, setModalOpen, formHeader }) => {
   const { uid, shippingAddress } = useSelector((state) => ({
     uid: state.auth.user.uid,
-    shippingAddress: state.auth.shippingAddress
+    shippingAddress: state.auth.shippingAddress,
   }));
   const address = shippingAddress?.shippingAddress;
   const handleAddress = (data) => {
@@ -29,7 +30,7 @@ export const GetAddress = ({ modalOpen, setModalOpen, formHeader }) => {
         <FormInput placeholder="City" name="city" required />
         <FormInput placeholder="Address" name="address" required />
         <FormInput placeholder="PinCode" name="pinCode" required />
-        <button>Submit</button>
+        <Button>Submit</Button>
       </Form>
     </Modal>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "../button/Button";
 
 export const Modal = ({ closeModal, children, formHeader }) => {
   const handleClick = () => {
@@ -9,9 +10,9 @@ export const Modal = ({ closeModal, children, formHeader }) => {
       <div className="modal-content">
         <div className="modal-header">
           <div className="form-header">{formHeader}</div>
-          <button className="close-button" onClick={handleClick}>
+          <Button className="close-button" onClick={handleClick}>
             X
-          </button>
+          </Button>
         </div>
         <div className="modal-body">{children}</div>
       </div>

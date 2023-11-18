@@ -1,16 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./home.css";
+import { Button } from "../../generic-components/button/Button";
+import { Container } from "../../generic-components/container/Container";
 
 export const Home = () => {
   return (
-    <div className="home">
-      <header className="hero">
+    <Container className="home">
+      <Container className="hero">
         <h1>Welcome</h1>
         <Link to="/products">
-          <button variant="outlined">Explore Now</button>
+          <Button>Explore Now</Button>
         </Link>
-      </header>
-    </div>
+      </Container>
+    </Container>
   );
 };

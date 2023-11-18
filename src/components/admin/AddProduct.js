@@ -1,3 +1,4 @@
+import { Button } from "../../generic-components/button/Button";
 import { Form } from "../../generic-components/form/Form";
 import { FormInput } from "../../generic-components/input/FormInput";
 import { Modal } from "../../generic-components/modal";
@@ -20,7 +21,7 @@ export const AddProduct = ({ modalOpen, setModalOpen, formHeader }) => {
         <FormInput placeholder="Id" name="id" required />
         <FormInput placeholder="Image" name="image" required />
         <FormInput placeholder="Price" name="price" required />
-        <button>Submit</button>
+        <Button>Submit</Button>
       </Form>
     </Modal>
   );

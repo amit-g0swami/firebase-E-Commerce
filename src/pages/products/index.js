@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { getProductsData } from "../../redux/reducers/product-reducer";
 import Product from "../../components/product";
 import TextField from "@mui/material/TextField";
+import { Container } from "../../generic-components/container/Container";
 
 export const Products = () => {
   const dispatch = useDispatch();
@@ -13,8 +14,8 @@ export const Products = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <div
+    <Container>
+      <Container
         className="row"
         style={{ alignItems: "center", marginBottom: "16px" }}
       >
@@ -27,30 +28,30 @@ export const Products = () => {
           sx={{
             "& .MuiInputBase-root": {
               backgroundColor: "#f5f5f5",
-              borderRadius: "8px"
+              borderRadius: "8px",
             },
             "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#fff"
+              borderColor: "#fff",
             },
             "& .MuiInputLabel-outlined": {
-              color: "#888"
+              color: "#888",
             },
             "& .MuiOutlinedInput-input": {
-              padding: "14px 14px"
+              padding: "14px 14px",
             },
             "& .MuiInputLabel-outlined.MuiInputLabel-shrink": {
-              transform: "translate(14px, -6px) scale(0.75)"
+              transform: "translate(14px, -6px) scale(0.75)",
             },
             "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#fff"
+              borderColor: "#fff",
             },
             "& .Mui-focused .MuiInputLabel-outlined": {
-              color: "#fff"
-            }
+              color: "#fff",
+            },
           }}
         />
-      </div>
+      </Container>
       <Product filter={filter} />
-    </div>
+    </Container>
   );
 };

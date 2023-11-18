@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { UserIsAuthenticated } from "./authenticated";
 import { UserNotAuthenticated } from "./not-authenticated";
 import { useState } from "react";
+import { Container } from "../../generic-components/container/Container";
 
 export const Navigation = () => {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -24,7 +25,7 @@ export const Navigation = () => {
   return (
     <AppBar position="sticky" sx={{ background: "white", boxShadow: "none" }}>
       <Toolbar>
-        <div className="row" style={{ width: "100%" }}>
+        <Container className="row" style={{ width: "100%" }}>
           <Link className="txt" to="/">
             <img
               src="https://cdn.cdnlogo.com/logos/r/29/react-native-firebase.svg"
@@ -43,17 +44,17 @@ export const Navigation = () => {
           >
             <MoreVertIcon sx={{ color: "black" }} />
           </IconButton>
-        </div>
+        </Container>
         <Menu
           anchorEl={anchorEl}
           anchorOrigin={{
             vertical: "top",
-            horizontal: "right"
+            horizontal: "right",
           }}
           keepMounted
           transformOrigin={{
             vertical: "top",
-            horizontal: "right"
+            horizontal: "right",
           }}
           open={Boolean(anchorEl)}
           onClose={handleMenuClose}

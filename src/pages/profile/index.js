@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddressForm } from "../../components/profile/AddressForm";
 import { UserDetails } from "../../components/profile/UserDetails";
 import { getShippingAddress } from "../../redux/actions/auth-action";
+import { Button } from "../../generic-components/button/Button";
+import { Container } from "../../generic-components/container/Container";
 
 export const Profile = () => {
   const dispatch = useDispatch();
@@ -11,14 +13,14 @@ export const Profile = () => {
     dispatch(getShippingAddress(user.uid));
   };
   return (
-    <div>
-      <div className="row">
+    <Container>
+      <Container className="row">
         <UserDetails user={user} />
-      </div>
+      </Container>
       <AddressForm address={shippingAddress} />
-      <div>
-        <button onClick={() => fetchShippingAddress()}>Show Address</button>
-      </div>
-    </div>
+      <Container>
+        <Button onClick={() => fetchShippingAddress()}>Show Address</Button>
+      </Container>
+    </Container>
   );
 };

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getShippingAddress } from "../../redux/actions/auth-action";
 import { GetAddress } from "../get-address-form";
+import { Button } from "../../generic-components/button/Button";
+import { Container } from "../../generic-components/container/Container";
 
 export const CartDetails = ({ cart, uid }) => {
   const dispatch = useDispatch();
@@ -14,16 +16,16 @@ export const CartDetails = ({ cart, uid }) => {
     }, [300]);
   };
   return (
-    <div>
-      <div className="cart-total">
-        <div className="row">
-          <div>Cart Total:</div>
-          <div>{cartTotal} $</div>
-        </div>
-      </div>
-      <div className="checkout">
-        <button onClick={() => getAddress()}>Check-out</button>
-      </div>
+    <Container>
+      <Container className="cart-total">
+        <Container className="row">
+          <Container>Cart Total:</Container>
+          <Container>{cartTotal} $</Container>
+        </Container>
+      </Container>
+      <Container className="checkout">
+        <Button onClick={() => getAddress()}>Check-out</Button>
+      </Container>
       {modalOpen === true && (
         <GetAddress
           modalOpen={modalOpen}
@@ -31,6 +33,6 @@ export const CartDetails = ({ cart, uid }) => {
           formHeader="Submit Address"
         />
       )}
-    </div>
+    </Container>
   );
 };

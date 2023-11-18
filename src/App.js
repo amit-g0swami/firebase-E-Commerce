@@ -9,6 +9,7 @@ import { ProtectedRoutes } from "./pages";
 import { NonProtectedBoundary } from "./templates/non-protected-boundary";
 import { Footer } from "./components/footer";
 import { Route } from "react-router-dom";
+import { Container } from "./generic-components/container/Container";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export default function App() {
     dispatch(CheckisUserLoggedIn());
   }, [dispatch]);
   return (
-    <div>
+    <Container>
       <Navigation />
       <NonProtectedBoundary>
         <AuthRoutes />
@@ -26,6 +27,6 @@ export default function App() {
       </ProtectedBoundary>
       <Route exact path="/admin" component={Admin} />
       <Footer />
-    </div>
+    </Container>
   );
 }

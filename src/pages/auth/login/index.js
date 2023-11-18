@@ -3,6 +3,8 @@ import { FormInput } from "../../../generic-components/input/FormInput";
 import { useDispatch } from "react-redux";
 import { SigninUser } from "../../../redux/actions/auth-action";
 import { Link } from "react-router-dom";
+import { Button } from "../../../generic-components/button/Button";
+import { Container } from "../../../generic-components/container/Container";
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -11,7 +13,7 @@ export const Login = () => {
     dispatch(SigninUser(email, password));
   };
   return (
-    <div className="center column">
+    <Container className="center column">
       <h2>Login</h2>
       <Form getFormData={handleLogin} className="form column">
         <FormInput
@@ -26,13 +28,13 @@ export const Login = () => {
           type="password"
           required
         />
-        <button>Login</button>
-        <div>
+        <Button>Login</Button>
+        <Container>
           <Link className="txt" to="/register">
             New here? Register
           </Link>
-        </div>
+        </Container>
       </Form>
-    </div>
+    </Container>
   );
 };

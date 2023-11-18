@@ -3,6 +3,8 @@ import { FormInput } from "../../../generic-components/input/FormInput";
 import { useDispatch } from "react-redux";
 import { SignupUser } from "../../../redux/actions/auth-action";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import { Container } from "../../../generic-components/container/Container";
 
 export const Register = () => {
   const dispatch = useDispatch();
@@ -11,7 +13,7 @@ export const Register = () => {
     dispatch(SignupUser(name, email, password));
   };
   return (
-    <div className="center column">
+    <Container className="center column">
       <h2>Register</h2>
       <Form getFormData={handleRegister} className="form column">
         <FormInput placeholder="User Name" name="name" type="name" required />
@@ -27,13 +29,13 @@ export const Register = () => {
           type="password"
           required
         />
-        <button>Register</button>
-        <div>
+        <Button>Register</Button>
+        <Container>
           <Link className="txt" to="/login">
             Already Registered ?
           </Link>
-        </div>
+        </Container>
       </Form>
-    </div>
+    </Container>
   );
 };

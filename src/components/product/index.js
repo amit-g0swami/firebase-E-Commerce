@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useProductFilter } from "../../hooks/useProductFilter";
 import { add } from "../../redux/reducers/cart-reducer";
+import { Button } from "../../generic-components/button/Button";
 
 const Product = ({ filter }) => {
   const { products } = useSelector((state) => state.products);
@@ -21,7 +22,7 @@ const Product = ({ filter }) => {
           />
           <div className="product-title">{item?.title?.slice(0, 10)}...</div>
           <div className="product-price">{item?.price} $</div>
-          <button onClick={() => handleClick(item)}>Add to Cart</button>
+          <Button onClick={() => handleClick(item)}>Add to Cart</Button>
         </div>
       ))}
     </div>
