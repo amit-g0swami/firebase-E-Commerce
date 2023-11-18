@@ -1,8 +1,13 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import useFooterStore from "./store/footer.store";
+import { useGetFooterString } from "./hooks/useGetFooterString";
 
 export const Footer = () => {
+  const { isLoading, isError } = useGetFooterString();
+  const footerString = useFooterStore((state) => state.footerString);
+
   return (
     <Box
       component="footer"
@@ -13,11 +18,13 @@ export const Footer = () => {
         width: "100%",
         backgroundColor: "#f8f8f8",
         padding: "10px",
-        textAlign: "center"
+        textAlign: "center",
       }}
     >
       <Typography variant="body2">
-        React E-commerce @2023 all rights reserved
+        {isLoading && "Loading..."}
+        {isError && "Error..."}
+        {footerString}
       </Typography>
     </Box>
   );

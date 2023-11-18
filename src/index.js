@@ -11,17 +11,32 @@ import store from "./redux/store";
 import ErrorBoundary from "./templates/error-boundary/ErrorBoundary";
 import { ThemeProvider } from "./theme";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+    },
+  },
+});
 
 root.render(
   <StrictMode>
     <ErrorBoundary>
       <BrowserRouter>
         <Provider store={store}>
-          <ThemeProvider>
-            <App />
-          </ThemeProvider>
+          <QueryClientProvider client={queryClient}>
+            <ThemeProvider>
+              <App />
+            </ThemeProvider>
+            <ReactQueryDevtools />
+          </QueryClientProvider>
           <ToastContainer
             position="top-center"
             autoClose={2000}
