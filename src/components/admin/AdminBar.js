@@ -37,7 +37,7 @@ export const AdminBar = ({
               Show Users <BiRefresh />
             </Button>
           </Grid>
-          <Grid item style={{ marginTop: "3px" }}>
+          <Grid item style={{ marginTop: "3px", cursor: "pointer" }}>
             <AddCircleOutlineIcon onClick={() => setModalOpen(!modalOpen)} />
           </Grid>
         </Grid>
