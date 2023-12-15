@@ -4,10 +4,12 @@ import { getProductsData } from "../../redux/reducers/product-reducer";
 import Product from "../../components/product";
 import TextField from "@mui/material/TextField";
 import { Container } from "../../generic-components/container/Container";
+import { useDebounce } from "../../hooks/useDebounce";
 
 export const Products = () => {
   const dispatch = useDispatch();
   const [filter, setFilter] = useState("");
+  const debouncedSearch = useDebounce(filter, 500);
 
   useEffect(() => {
     dispatch(getProductsData());
@@ -51,7 +53,7 @@ export const Products = () => {
           }}
         />
       </Container>
-      <Product filter={filter} />
+      <Product filter={debouncedSearch} />
     </Container>
   );
 };

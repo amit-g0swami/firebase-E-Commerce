@@ -7,7 +7,6 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Button } from "../../generic-components/button/Button";
 
 export const AdminBar = ({
-  setActiveTable,
   setModalOpen,
   modalOpen,
   setProducts,
@@ -15,11 +14,9 @@ export const AdminBar = ({
 }) => {
   const handleShowProducts = async () => {
     await showAllProducts(setProducts);
-    setActiveTable("products");
   };
   const handleShowUsers = async () => {
     await showAllUsers(setUsers);
-    setActiveTable("users");
   };
   return (
     <Grid
