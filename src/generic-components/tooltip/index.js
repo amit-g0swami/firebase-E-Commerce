@@ -1,15 +1,11 @@
 import React, { useState } from "react";
+import "./tooltip.css";
 
 export const Tooltip = ({ text, position = "bottom", children }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const handleMouseEnter = () => {
-    setShowTooltip(true);
-  };
-
-  const handleMouseLeave = () => {
-    setShowTooltip(false);
-  };
+  const handleMouseEnter = () => setShowTooltip(true);
+  const handleMouseLeave = () => setShowTooltip(false);
 
   const getTooltipStyle = () => {
     switch (position) {
@@ -27,37 +23,24 @@ export const Tooltip = ({ text, position = "bottom", children }) => {
   };
 
   return (
-    <div
-      style={{
-        position: "relative",
-        display: "inline-block",
-      }}
-    >
-      <div
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        style={{
-          cursor: "pointer",
-        }}
-      >
-        {children}
-      </div>
-      {showTooltip && (
+    <>
+      <div className="tooltip-container">
         <div
-          style={{
-            position: "absolute",
-            backgroundColor: "#333",
-            color: "#fff",
-            padding: "8px",
-            borderRadius: "4px",
-            boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
-            zIndex: 50,
-            ...getTooltipStyle(),
-          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className="tooltip-trigger"
         >
-          {text}
+          {children}
         </div>
-      )}
-    </div>
+        {showTooltip && (
+          <div
+            className={`tooltip tooltip-${position}`}
+            style={getTooltipStyle()}
+          >
+            {text}
+          </div>
+        )}
+      </div>
+    </>
   );
 };

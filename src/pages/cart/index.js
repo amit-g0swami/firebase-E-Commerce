@@ -13,22 +13,28 @@ export const Cart = () => {
   const handleClick = (id) => {
     dispatch(remove(id));
   };
+
+  const renderCartItems = () => {
+    if (cart.length === 0) {
+      return (
+        <Container className="center">
+          <h2>Cart is empty</h2>
+        </Container>
+      );
+    }
+    return (
+      <Container style={{ gap: "10px" }} className="column">
+        {cart.map((item) => (
+          <CartItem key={item.id} item={item} handleClick={handleClick} />
+        ))}
+      </Container>
+    );
+  };
+
   return (
     <Container>
-      {cart?.length > 0 && <CartDetails cart={cart} uid={uid} />}
-      <Container className="item">
-        {cart?.length === 0 ? (
-          <Container className="center">
-            <h2>Cart is empty</h2>
-          </Container>
-        ) : (
-          <Container style={{ gap: "10px" }} className="column">
-            {cart?.map((item) => (
-              <CartItem key={item?.id} item={item} handleClick={handleClick} />
-            ))}
-          </Container>
-        )}
-      </Container>
+      {cart.length > 0 && <CartDetails cart={cart} uid={uid} />}
+      <Container className="item">{renderCartItems()}</Container>
     </Container>
   );
 };

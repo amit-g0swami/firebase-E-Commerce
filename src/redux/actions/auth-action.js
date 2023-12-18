@@ -1,12 +1,13 @@
 import firebaseApp, { db } from "../../firebase";
 import { toast } from "react-toastify";
+import { authActionTypes } from "../types";
 
 export const SignoutUser = () => (dispatch) => {
   firebaseApp
     .auth()
     .signOut()
     .then(() => {
-      dispatch({ type: "SIGNOUT_USER" });
+      dispatch({ type: authActionTypes.SIGNOUT_USER });
     });
 };
 
@@ -18,7 +19,7 @@ export const SignupUser = (name, email, password) => (dispatch) => {
       firebaseApp
         .auth()
         .currentUser.updateProfile({
-          displayName: name
+          displayName: name,
         })
         .then(async () => {
           const currentUser = await firebaseApp.auth().currentUser;
@@ -29,7 +30,7 @@ export const SignupUser = (name, email, password) => (dispatch) => {
             email: currentUser.email,
             admin: null,
             cartDetails: [],
-            shippingAddress: null
+            shippingAddress: null,
           };
           usersCollection
             .add(newUser)
@@ -41,7 +42,7 @@ export const SignupUser = (name, email, password) => (dispatch) => {
             });
           dispatch({
             type: "SIGNIN_USER",
-            payload: newUser
+            payload: newUser,
           });
         })
         .catch((error) => {
@@ -59,12 +60,12 @@ export const SigninUser = (email, password) => (dispatch) => {
     .signInWithEmailAndPassword(email, password)
     .then((user) => {
       dispatch({
-        type: "SIGNIN_USER",
+        type: authActionTypes.SIGNIN_USER,
         payload: {
           uid: user.user.uid,
           name: user.user.displayName,
-          email: user.user.email
-        }
+          email: user.user.email,
+        },
       });
     })
     .catch((error) => toast("Login Failed"));
@@ -74,12 +75,12 @@ export const CheckisUserLoggedIn = () => (dispatch) => {
   firebaseApp.auth().onAuthStateChanged((user) => {
     if (user) {
       dispatch({
-        type: "SIGNIN_USER",
+        type: authActionTypes.SIGNIN_USER,
         payload: {
           uid: user.uid,
           name: user.displayName,
-          email: user.email
-        }
+          email: user.email,
+        },
       });
     }
   });
@@ -136,9 +137,9 @@ export const getShippingAddress = (userId) => {
 
 export const setAddress = (shippingAddress) => {
   return {
-    type: "SET_ADDRESS",
+    type: authActionTypes.SET_ADDRESS,
     payload: {
-      shippingAddress
-    }
+      shippingAddress,
+    },
   };
 };

@@ -4,7 +4,7 @@ import { FormContext } from "../form/Form";
 
 export const FormInput = ({ ...props }) => {
   const { values, setValues } = useContext(FormContext);
-  const [type, setType] = useState(props.type);
+  const [type] = useState(props.type);
   const handleChange = (e) => {
     let value = e.target.value;
     value = type === INPUT_TYPE.NUMBER ? parseFloat(value) : value;

@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const api = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com"
+  baseURL: "https://jsonplaceholder.typicode.com",
 });
 
 api.interceptors.request.use(
